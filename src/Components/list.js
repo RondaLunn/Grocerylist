@@ -165,8 +165,8 @@ class List extends React.Component {
 
   readdItem(e){
     let id = e.target.parentNode.id;
-    let item = e.target.parentNode.childNodes[0].childNodes[1].innerHTML;
-    let quantity = e.target.parentNode.childNodes[0].childNodes[3].value;
+    let item = e.target.parentNode.childNodes[0].childNodes[0].innerHTML;
+    let quantity = e.target.parentNode.childNodes[0].childNodes[2].value;
     let message = "";
 
     let removedList = this.state.removed;
@@ -351,13 +351,18 @@ class List extends React.Component {
   }
 
   render() {
+    const { items, removed } = this.state
+    const lists = {items, removed}
     return (
       <div className="list">
         <h1>Grocery List</h1>
+        
         <Login username={this.state.username} login={this.login} register={this.register} logout={this.logout} loggedin={this.state.loggedin}/>
+        
         <div className="list-container">
-        <InputBar addItem={this.addItem}/><p>{this.state.error}</p>
+        <InputBar addItem={this.addItem} lists={lists} editItem={this.editItem} readdItem={this.readdItem} /><p>{this.state.error}</p>
         <p>{this.state.message}</p>
+
         <ul>{this.state.items.map(item => (
         <li key={item.id} id={item.id}>
             <ListItem id={item.id} item={item.item} quantity={item.quantity} editItem={this.editItem}/>
@@ -367,7 +372,7 @@ class List extends React.Component {
         </ul>
 
         {this.state.removed.length > 0 ? <p>Deleted Items</p> : <p></p>}
-        <ul>{this.state.removed.map(item => (
+        <ul className='removed-list'>{this.state.removed.map(item => (
         <li key={item.id} id={item.id}>
             <ListItem id={item.id} item={item.item} quantity={item.quantity} editItem={this.editItem}/>
             <button onClick={this.readdItem}>+</button>

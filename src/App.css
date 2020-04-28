@@ -29,6 +29,10 @@ input {
   max-width: 400px;
 }
 
+.removed-list {
+  background-color: lightgray;
+}
+
 .list-container {
   font-size: 1.25rem;
 }

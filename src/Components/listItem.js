@@ -51,7 +51,7 @@ class ListItem extends React.Component {
   render() {
     return (
       <div className="list-item" >
-        <input type="checkbox" name="checkbox" />
+        {/* <input type="checkbox" name="checkbox" /> */}
         <div
           type="text"
           name="item"
