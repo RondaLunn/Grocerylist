@@ -24,14 +24,15 @@ if(isset($_COOKIE[$cookie_name]) && $_COOKIE[$cookie_name] == $cookie_value) {
           $id = $_POST['id'];
           $item = mysqli_real_escape_string($connect, $_POST['item']);
           $quantity = $_POST['quantity'];
+          $category = $_POST['category'];
           $removed = $_POST['removed'];
           $update = $_POST['update'];
           if ($update == 1) {
             $sql = "update grocerylist set removed = $removed where id = $id";
           } elseif ($update == 2) {
-            $sql = "update grocerylist set item = '$item', quantity = $quantity where id = $id";
+            $sql = "update grocerylist set item = '$item', quantity = $quantity, category = '$category' where id = $id";
           } else {
-            $sql = "insert into grocerylist (id, item, quantity) values ($id, '$item', $quantity)";
+            $sql = "insert into grocerylist (id, item, quantity, category) values ($id, '$item', $quantity, '$category')";
           }
           break;
         case 'DELETE':

@@ -23,35 +23,60 @@ input {
 }
 
 .list {
-  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
   margin: auto;
-  width: 80%;
+  width: 100%;
   max-width: 400px;
 }
 
-.removed-list {
-  background-color: lightgray;
-}
-
 .list-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
   font-size: 1.25rem;
 }
 
+.input-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
 .input-bar {
-  position: relative;
   display: flex;
   justify-content: center;
   align-items: center;
-  width: 100%;
+  width: 85%;
   height: 3rem;
 }
 
+.removed-list-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background-color: lightgray;
+  width: 100%;
+}
+
+.removed-list {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 85%;
+}
+
 .list-item {
-  position: relative;
   display: flex;
   justify-content: center;
   align-items: center;
-  width: 100%;
+  width: 85%;
   padding: 0.5rem 0;
 }
 
@@ -60,6 +85,14 @@ input {
   flex-grow: 1;
   overflow: hidden;
   overflow-wrap: break-word;
+  padding: 0 0.5rem;
+  text-align: left;
+  font-size: 1.25rem;
+}
+
+.item-name-input {
+  width: 8rem;
+  flex-grow: 1;
   padding: 0 0.5rem;
   text-align: left;
   font-size: 1.25rem;
@@ -120,32 +153,3 @@ input[type=number]::-webkit-outer-spin-button {
     border: #d1e8ff 1px solid;
     color: #FFF;
 }
-/* @media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
-}
-
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
-}
-
-.App-link {
-  color: #61dafb;
-}
-
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
-} */

@@ -1,57 +1,54 @@
-import React from "react";
+import React from "react"
 
 class ListItem extends React.Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      item: this.props.item,
-      quantity: this.props.quantity,
-      inputDisplay: "none",
-      itemDisplay: "flex"
-    };
-    this.setItem = this.setItem.bind(this);
-    this.changeItem = this.changeItem.bind(this);
-    this.toggleInput = this.toggleInput.bind(this);
-    this.setQuantity = this.setQuantity.bind(this);
+  state = {
+    item: "",
+    quantity: "",
+    category: "",
+    inputDisplay: "none",
+    itemDisplay: "flex"
   }
 
-  setItem(e) {
-    let item = e.target.value;
-    this.setState({ item: item });
+  setItem = (e) => {
+    this.setState({ item: e.target.value })
   }
 
-  changeItem() {
-    this.props.editItem(this.props.id, this.state.item, this.state.quantity);
-    this.toggleInput();
+  changeItem = () => {
+    this.props.editItem(this.props.id, this.state.item, this.state.quantity, this.state.category);
+    this.toggleInput()
+  }
+  
+  setCategory = (e) => {
+    this.setState({ category: e.target.value })
   }
 
-  toggleInput() {
+  toggleInput = () => {
     if (this.state.inputDisplay === 'none') {
       this.setState({ itemDisplay: 'none' })
-      this.setState( { inputDisplay: 'flex' })
+      this.setState({ inputDisplay: 'flex' })
     } else {
       this.setState({ itemDisplay: 'flex' })
-      this.setState( { inputDisplay: 'none' })
+      this.setState({ inputDisplay: 'none' })
     }
   }
 
-  setQuantity(e) {
-    let quantity = parseInt(e.target.value);
+  setQuantity = (e) => {
+    let quantity = parseInt(e.target.value)
     if (!isNaN(quantity)) {
-      this.setState({ quantity: quantity });
-      this.props.editItem(this.props.id, this.state.item, quantity);
+      this.setState({ quantity: quantity })
+      this.props.editItem(this.props.id, this.state.item, quantity, this.state.category)
     }
   }
 
   componentDidMount() {
-    this.setState({ item: this.props.item });
-    this.setState({ quantity: this.props.quantity });
+    this.setState({ item: this.props.item })
+    this.setState({ quantity: this.props.quantity })
+    this.setState({ category: this.props.category })
   }
 
   render() {
     return (
-      <div className="list-item" >
-        {/* <input type="checkbox" name="checkbox" /> */}
+      <div className="list-item">
         <div
           type="text"
           name="item"
@@ -65,17 +62,25 @@ class ListItem extends React.Component {
         <input
           type="text"
           name="item"
-          className="item-name"
+          className="item-name-input"
           onChange={this.setItem}
-          defaultValue = {this.state.item}/>
+          value = {this.state.item}/>
+
+          <select id="categories" value={this.state.category} onChange={this.setCategory}>
+            {this.props.categories.map(category => (
+              <option key={category} value={category}>{category}</option>
+            ))}
+          </select>
+
           <button onClick={this.changeItem}>+</button>
+          <button onClick={this.toggleInput}>x</button>
         </div>
           
         <input
           type="number"
           name="quantity"
           className="item-quantity"
-          defaultValue={this.state.quantity}
+          value={this.state.quantity}
           onChange={this.setQuantity}
         />
       </div>
@@ -83,4 +88,4 @@ class ListItem extends React.Component {
   }
 }
 
-export default ListItem;
+export default ListItem

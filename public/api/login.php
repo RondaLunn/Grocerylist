@@ -22,7 +22,7 @@ if(count($_POST)>0) {
         $hash = $row['password'];
         if (password_verify($password, $hash)) {
             echo ("Authenticated");
-            setcookie("loggedin", "true");
+            setcookie("loggedin", "true", time() + (30*24*60*60*1000));
         } else {
             echo ("Invalid username or password!");
     }
