@@ -9,18 +9,18 @@ class InputBar extends React.Component {
   }
 
   setItem = (e) => {
-    this.setState({ item: e.target.value });
+    this.setState({ item: e.target.value })
   }
 
   setQuantity = (e) => {
-    let quantity = parseInt(e.target.value);
+    let quantity = parseInt(e.target.value)
     if (!isNaN(quantity)) {
-      this.setState({ quantity: quantity });
+      this.setState({ quantity: quantity })
     }
   }
 
   setCategory = (e) => {
-    this.setState({ category: e.target.value });
+    this.setState({ category: e.target.value })
   }
 
   handleAdd = (e) => {
@@ -74,4 +74,4 @@ class InputBar extends React.Component {
   }
 }
 
-export default InputBar;
+export default InputBar

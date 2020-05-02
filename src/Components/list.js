@@ -1,7 +1,6 @@
 import React from 'react'
 import axios from 'axios'
 
-import ListItem from './ListItem'
 import InputBar from './InputBar'
 import Login from './Login'
 import SortedList from './SortedList'
@@ -396,32 +395,15 @@ class List extends React.Component {
         <Login username={username} login={this.login} register={this.register} logout={this.logout} loggedin={loggedin}/>
         
         <div className="list-container">
-        <InputBar addItem={this.addItem} lists={lists} categories={categories} editItem={this.editItem} readdItem={this.readdItem} />
-        {message !== '' && <p>{message}</p>}
-
-        <SortedList items={items} categories={categories} editItem={this.editItem} removeItem={this.removeItem}/>
-
-        {/* <ul>{this.state.items.map(item => (
-        <li key={item.id} id={item.id}>
-            <ListItem id={item.id} item={item.item} quantity={item.quantity} category={item.category} categories={categories} editItem={this.editItem}/>
-            <button onClick={this.removeItem}>-</button>
-        </li>
-        ))}
-        </ul> */}
+          <InputBar addItem={this.addItem} lists={lists} categories={categories} editItem={this.editItem} readdItem={this.readdItem} />
+          {message !== '' && <p>{message}</p>}
         
-        <div className='removed-list-container'>
-          <RemovedList removed={removed} categories={categories} editItem={this.editItem} readdItem={this.readdItem} deleteItem={this.deleteItem} />
-        {/* {removed.length > 0 ? <p>Deleted Items</p> : <p></p>}
-        <ul>{removed.sort((a, b) => a.item - b.item).map(item => (
-        <li key={item.id} id={item.id}>
-            <ListItem id={item.id} item={item.item} quantity={item.quantity} category={item.category} categories={categories} editItem={this.editItem}/>
-            <button onClick={this.readdItem}>+</button>
-            <button onClick={this.deleteItem}>-</button>
-        </li>
-        ))}
-        </ul> */}
-        </div>
-        
+          <SortedList items={items} categories={categories} editItem={this.editItem} removeItem={this.removeItem}/>
+          
+          <div className='removed-list-container'>
+            <RemovedList removed={removed} categories={categories} editItem={this.editItem} readdItem={this.readdItem} deleteItem={this.deleteItem} />
+          </div>
+          
         </div>
       </div>
     )
