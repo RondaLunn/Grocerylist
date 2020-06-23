@@ -60,23 +60,25 @@ class ListItem extends React.Component {
         
         <div style={{display:this.state.inputDisplay}}>
         <input
+          title="Item Name"
           type="text"
           name="item"
           className="item-name-input"
           onChange={this.setItem}
           value = {this.state.item}/>
 
-          <select id="categories" value={this.state.category} onChange={this.setCategory}>
+          <select title="Categories" id="categories" value={this.state.category} onChange={this.setCategory}>
             {this.props.categories.map(category => (
-              <option key={category} value={category}>{category}</option>
+              <option title={category} key={category} value={category}>{category}</option>
             ))}
           </select>
 
-          <button onClick={this.changeItem}>+</button>
-          <button onClick={this.toggleInput}>x</button>
+          <button title="Update Item" onClick={this.changeItem}>+</button>
+          <button title="Cancel Edit" onClick={this.toggleInput}>x</button>
         </div>
           
         <input
+          title="quantity"
           type="number"
           name="quantity"
           className="item-quantity"

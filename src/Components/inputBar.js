@@ -47,26 +47,28 @@ class InputBar extends React.Component {
     return (
       <div className="input-container">
       <div className="input-bar">
-        <input
+        <label><input
+          title="Item Name"
           type="text"
           name="item"
           className="item-name"
           value={this.state.item}
           onChange={this.setItem}
-        />
-        <input
+        /></label>
+        <label><input
+          title="Quantity"
           type="number"
           name="quantity"
           className="item-quantity"
           value={this.state.quantity}
           onChange={this.setQuantity}
-        />
-        <select id="categories" value={this.state.category} onChange={this.setCategory}>
+        /></label>
+        <label><select title="Catgories" id="categories" value={this.state.category} onChange={this.setCategory}>
           {this.props.categories.map(category => (
-            <option key={category} value={category}>{category}</option>
+            <option title={category} key={category} value={category}>{category}</option>
           ))}
-        </select>
-        <button name="add-item" onClick={e => this.handleAdd(e)}>+</button>
+        </select></label>
+        <button title="Add Item" name="add-item" onClick={e => this.handleAdd(e)}>+</button>
       </div>
       <SearchResults searchList={this.props.lists} query={this.state.item} categories={this.props.categories} readdItem={e => this.handleReAdd(e)} editItem={this.props.editItem}/>
       </div>
