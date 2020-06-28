@@ -41,10 +41,9 @@ class List extends React.Component {
       lastKey: 0,
     }
 
-  addItem = (e) => {
-    let item = e.target.parentNode.childNodes[0].value
-    let quantity = e.target.parentNode.childNodes[1].value
-    let category = e.target.parentNode.childNodes[2].value
+  addItem = (listItem) => {
+    let { item, quantity, category } = listItem
+
     let message = ""
     if (item) {
         let itemList = this.state.items;
@@ -78,19 +77,16 @@ class List extends React.Component {
             message = ""
           } else {
             message = "Error adding item";
-            this.getList()
           }          
           this.setState({ message: message })
+          this.getList()
         })
         .catch(() => {
           message = "Error adding item";
           this.setState({ message: message })
           this.getList()
         })
-    }  
-    e.target.parentNode.childNodes[0].value = ""
-    e.target.parentNode.childNodes[1].value = 1
-    e.target.parentNode.childNodes[2].value = 'produce'
+      }  
     }
   }
 
@@ -123,9 +119,9 @@ class List extends React.Component {
           message = ""
         } else {
           message = "Error removing item"
-          this.getList()
         }
         this.setState({ message: message })
+        this.getList()
       })
       .catch(() => {
         message = "Error deleting item"
@@ -172,9 +168,9 @@ class List extends React.Component {
             message = ""
           } else {
             message = "Error editing item"
-            this.getList()
           }
           this.setState({ message: message })
+          this.getList()
         })
         .catch(() => {
           message = "Error editing item";
@@ -230,9 +226,9 @@ class List extends React.Component {
           message = ""
         } else {
           message = "Error adding item"
-          this.getList()
         }
         this.setState({ message: message })
+        this.getList()
       })
       .catch(() => {
         message = "Error adding item"
@@ -260,11 +256,9 @@ class List extends React.Component {
             message = ""
           } else {
             message = "Error deleting item"
-            this.getList()
           }
-
           this.setState({ message: message })
-
+          this.getList()
         })
         .catch(() => {
           message = "Error deleting item"

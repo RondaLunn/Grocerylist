@@ -24,7 +24,8 @@ class InputBar extends React.Component {
   }
 
   handleAdd = (e) => {
-    this.props.addItem(e)
+    const listItem = this.state
+    this.props.addItem(listItem)
 
     this.setState(() => ({
       item: "",
@@ -47,27 +48,29 @@ class InputBar extends React.Component {
     return (
       <div className="input-container">
       <div className="input-bar">
-        <label><input
+        <input
           title="Item Name"
           type="text"
           name="item"
+          id="item"
           className="item-name"
           value={this.state.item}
           onChange={this.setItem}
-        /></label>
-        <label><input
+        />
+        <input
           title="Quantity"
           type="number"
+          id="quantity"
           name="quantity"
           className="item-quantity"
           value={this.state.quantity}
           onChange={this.setQuantity}
-        /></label>
-        <label><select title="Catgories" id="categories" value={this.state.category} onChange={this.setCategory}>
+        />
+        <select title="Catgories" id="categories" className="item-category" value={this.state.category} onChange={this.setCategory}>
           {this.props.categories.map(category => (
             <option title={category} key={category} value={category}>{category}</option>
           ))}
-        </select></label>
+        </select>
         <button title="Add Item" name="add-item" onClick={e => this.handleAdd(e)}>+</button>
       </div>
       <SearchResults searchList={this.props.lists} query={this.state.item} categories={this.props.categories} readdItem={e => this.handleReAdd(e)} editItem={this.props.editItem}/>
